@@ -1,0 +1,23 @@
+{
+  "name": "findmyzipcode",
+  "version": "1.0.0",
+  "description": "This api find an zipcode and return your address",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gborges13/FindMyZipCode.git"
+  },
+  "author": "Guilherme Borges de Freitas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gborges13/FindMyZipCode/issues"
+  },
+  "homepage": "https://github.com/gborges13/FindMyZipCode#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {}
+}
