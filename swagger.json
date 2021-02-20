@@ -1,0 +1,70 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Find My Zip Code",
+      "description": "This api find an zipcode and return your address.",
+      "version": "1.0.0"
+    },
+    "host" : "localhost:3000",
+    "basePath": "/",
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+        "zipcode": {
+          "get": {
+            "summary": "Returns a zip code object by an zip code number.",
+            "parameters": [{
+                "in": "body",
+                "type": "object",
+                "description" : "Object to find a zip code",
+                
+                "schema": {
+                    "type": "object",
+                    "required": [
+                      "zipCode"
+                    ],
+                    "properties": {
+                      "zipCode": {
+                        "type": "string"
+                      }
+                    }
+                  }                
+            }],
+            "responses": {
+              "200": {
+                "description": "A zip code object.",
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "zipCode": {
+                      "type": "string",
+                      "example": "14400000"
+                    },
+                    "address": {
+                      "type": "string",
+                      "example": "Avenida Presidente Vargas"
+                    },
+                    "district" : {
+                        "type" : "string",
+                        "example" : "Cidade Nova"
+                    },
+                    "city" : {
+                        "type" : "string",
+                        "example": "Franca"
+                    },
+                    "state" : {
+                        "type" : "string",
+                        "example": "SP"                        
+                    }
+                  }
+                }
+              },
+              "404": {
+                "description": "A zip code with the specified number was not found."
+              }
+            }
+          }
+        }
+      }    
+  }
