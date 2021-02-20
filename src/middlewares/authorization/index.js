@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const SECRET = process.env.SECRET_TOKEN || 'FindMyZipCodePrivateToken'
-const applicationToken = ''
+let applicationToken = ''
 
 function verifyToken(req, res, next){
     const token = req.headers['authorization'];
