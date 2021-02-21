@@ -5,12 +5,12 @@ let applicationToken = ''
 function verifyToken(request, response, next){
     const token = request.headers['authorization'];
     if (!token) {
-        return res.status(401).json({ message: 'Authorization not found.' });
+        return response.status(401).json({ message: 'Authorization not found.' });
     }
     
     jwt.verify(token, SECRET, function(err, decoded) {
       if (err) {
-        return response.status(500).json({ auth: false, message: 'Failed to authenticate' });
+        return response.status(401).json({ auth: false, message: 'Failed to authenticate' });
       }
       
       next();

@@ -3,7 +3,7 @@ const zipCodeController = require('./zipcode-controller')
 const authorizationMiddleware = require('./../../middlewares/authorization').verifyToken
 const { body } = require('express-validator');
 
-routes.get('/zipcode',            
+routes.post('/zipcode',            
            authorizationMiddleware, 
            body('zipCode').isString().isLength({min: 8, max: 8}),
            (request, response) => {   

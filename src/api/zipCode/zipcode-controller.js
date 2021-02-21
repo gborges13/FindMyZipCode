@@ -8,8 +8,10 @@ function getZipCode(request, response){
         return response.status(400).json({ errors: errors.array() });
     }            
 
-
     let {zipCode} = request.body
+    if (!zipCode){
+        zipCode = request.params.zipcode
+    }
 
     const record = zipCodeService.findZipCode(zipCode)
     if(record){

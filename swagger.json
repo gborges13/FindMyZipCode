@@ -1,70 +1,143 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "title": "Find My Zip Code",
-      "description": "This api find an zipcode and return your address.",
-      "version": "1.0.0"
-    },
-    "host" : "localhost:3000",
-    "basePath": "/",
-    "schemes": [
-      "http"
-    ],
-    "paths": {
-        "zipcode": {
-          "get": {
-            "summary": "Returns a zip code object by an zip code number.",
-            "parameters": [{
-                "in": "body",
-                "type": "object",
-                "description" : "Object to find a zip code",
-                
-                "schema": {
-                    "type": "object",
-                    "required": [
-                      "zipCode"
-                    ],
-                    "properties": {
-                      "zipCode": {
-                        "type": "string"
-                      }
-                    }
-                  }                
-            }],
-            "responses": {
-              "200": {
-                "description": "A zip code object.",
-                "schema": {
+  "swagger": "2.0",
+  "info": {
+    "title": "Find My Zip Code",
+    "description": "This api find an zipcode and return your address.",
+    "version": "1.0.0"
+  },
+  "host" : "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+      "/zipcode": {
+        "post": {
+          "tags" : ["zip code"],
+          "summary": "Returns a zip code object by an zip code number.",
+          "operationId" : "findZipCodePost",
+          "parameters": [{
+              "in": "body",
+              "name": "zipcode",
+              "description" : "Object to find a zip code",
+              "required": true,
+
+              "schema": {
                   "type": "object",
+                  "required": [
+                    "zipCode"
+                  ],
                   "properties": {
                     "zipCode": {
-                      "type": "string",
-                      "example": "14400000"
-                    },
-                    "address": {
-                      "type": "string",
-                      "example": "Avenida Presidente Vargas"
-                    },
-                    "district" : {
-                        "type" : "string",
-                        "example" : "Cidade Nova"
-                    },
-                    "city" : {
-                        "type" : "string",
-                        "example": "Franca"
-                    },
-                    "state" : {
-                        "type" : "string",
-                        "example": "SP"                        
+                      "type": "string"
                     }
                   }
+                }                
+          }],
+          "responses": {
+            "200": {
+              "description": "A zip code object.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "zipCode": {
+                    "type": "string",
+                    "example": "14400000"
+                  },
+                  "address": {
+                    "type": "string",
+                    "example": "Avenida Presidente Vargas"
+                  },
+                  "district" : {
+                      "type" : "string",
+                      "example" : "Cidade Nova"
+                  },
+                  "city" : {
+                      "type" : "string",
+                      "example": "Franca"
+                  },
+                  "state" : {
+                      "type" : "string",
+                      "example": "SP"                        
+                  }
                 }
-              },
-              "404": {
-                "description": "A zip code with the specified number was not found."
               }
+            },
+            "401": {
+              "description": "When you don't use a token or used an invalid token."
+            },
+            "404": {
+              "description": "A zip code with the specified number was not found."
             }
-          }
+          },
+          "security": [
+            {
+              "api_key": []
+            }
+          ]    
         }
-      }    
+      },
+      "/zipcode/{zipcode}" : {
+        "get": {
+          "tags" : ["zip code"],
+          "summary": "Returns a zip code object by an zip code number.",
+          "operationId" : "findZipCodeGet",
+          "parameters": [{
+              "in": "path",
+              "name" : "zipcode",
+              "description" : "zip code to find",
+              "required": true,
+              "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "A zip code object.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "zipCode": {
+                    "type": "string",
+                    "example": "14400000"
+                  },
+                  "address": {
+                    "type": "string",
+                    "example": "Avenida Presidente Vargas"
+                  },
+                  "district" : {
+                      "type" : "string",
+                      "example" : "Cidade Nova"
+                  },
+                  "city" : {
+                      "type" : "string",
+                      "example": "Franca"
+                  },
+                  "state" : {
+                      "type" : "string",
+                      "example": "SP"                        
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "When you don't use a token or used an invalid token."
+            },
+            "404": {
+              "description": "A zip code with the specified number was not found."
+            }
+          },
+          "security": [
+            {
+              "api_key": []
+            }
+          ]    
+        }        
+      }
+  },
+  "securityDefinitions": {
+    "api_key": {
+        "type": "apiKey",
+        "name": "authorization",
+        "in": "header"
+    }
   }
+}
