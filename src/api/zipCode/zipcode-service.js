@@ -7,7 +7,22 @@ const repositoryZipcode = require('./zipcode-repository')
  * @returns {object} - Object of zip code
  */
 function findZipCode(zipCode){    
-    return repositoryZipcode.findOne(zipCode)
+    let result = repositoryZipcode.findOne(zipCode)
+    if (result){
+        return result
+    }
+
+    for (let index = zipCode.length; index > 1; index--) {
+        zipCode = zipCode.substring(0, index-1) + '0' + zipCode.substring(index, zipCode.length)
+        result = repositoryZipcode.findOne(zipCode)        
+
+        if (result){
+            return result
+        }    
+
+    }
+
+    return null
 }
 
 module.exports = {
