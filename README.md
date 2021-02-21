@@ -1,2 +1,10 @@
 # FindMyZipCode
 This api find an zipcode and return your address
+
+
+# New Realic
+https://one.newrelic.com/launcher/nr1-core.explorer?pane=eyJlbnRpdHlJZCI6Ik16QTJOelUyTW54QlVFMThRVkJRVEVsRFFWUkpUMDU4T0RFd09EWTFOelkzIiwiaXNPdmVydmlldyI6dHJ1ZSwibmVyZGxldElkIjoiYXBtLW5lcmRsZXRzLm92ZXJ2aWV3In0=&sidebars[0]=eyJuZXJkbGV0SWQiOiJucjEtY29yZS5hY3Rpb25zIiwiZW50aXR5SWQiOiJNekEyTnpVMk1ueEJVRTE4UVZCUVRFbERRVlJKVDA1OE9ERXdPRFkxTnpZMyIsInNlbGVjdGVkTmVyZGxldCI6eyJuZXJkbGV0SWQiOiJhcG0tbmVyZGxldHMub3ZlcnZpZXciLCJpc092ZXJ2aWV3Ijp0cnVlfX0=&platform[timeRange][duration]=1800000&platform[$isFallbackTimeRange]=false
+
+# Security 
+This api use an JWT Token to authenticate all requests, for use insert the key 'Authorization' on headers
+Valid token example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTM5NDQ5NDF9.XzqVCh8oGa1_rElG1cvBi_JKVH58j0DVNCyH7oEquUs
