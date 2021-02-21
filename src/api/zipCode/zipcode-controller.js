@@ -1,6 +1,14 @@
 const zipCodeService = require('./zipcode-service')
+const { validationResult } = require('express-validator');
 
 function getZipCode(request, response){
+
+    const errors = validationResult(request);
+    if (!errors.isEmpty()) {
+        return response.status(400).json({ errors: errors.array() });
+    }            
+
+
     let {zipCode} = request.body
 
     const record = zipCodeService.findZipCode(zipCode)
