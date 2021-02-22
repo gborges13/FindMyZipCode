@@ -1,14 +1,6 @@
 const zipCodeService = require('../../../src/api/zipCode/zipcode-service')
 const zipCodeRepositoryHelper = require('../../../src/api/zipCode/zipcode-repository')
-
-const zipCodeRecord = {
-    zipCode : '14400000',
-    address : 'Av. Alonso y Alonso',
-    district: 'Centro',
-    city: 'Franca',
-    state: 'SP'
-}
-
+const zipCodeRecord = require('./zipCode-fakeData')
 
 describe('Tests on zipCode subject at service responsability', () => {
 
