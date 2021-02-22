@@ -1,6 +1,6 @@
 const zipCodeService = require('../../../src/api/zipCode/zipcode-service')
 const zipCodeRepositoryHelper = require('../../../src/api/zipCode/zipcode-repository')
-const zipCodeRecord = require('./zipCode-fakeData')
+const zipCodeRecord = require('./zipcode-fakeData')
 
 describe('Tests on zipCode subject at service responsability', () => {
 
