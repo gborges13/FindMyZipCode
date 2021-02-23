@@ -26,6 +26,7 @@ Valid token example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTM5NDQ5ND
 
 # Swagger documentation
 Swagger documentation is acessible on http://host:port/api-docs
+
 Example: http://localhost:3000/api-docs/
 
 # Metrics
