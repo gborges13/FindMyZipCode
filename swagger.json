@@ -11,6 +11,27 @@
     "http"
   ],
   "paths": {
+      "/ping" : {
+        "get" : {
+          "tags" : ["ping"],
+          "summary": "Returns a pong when the api is online.",
+          "operationId" : "ping",
+          "responses": {
+            "200": {
+              "description": "Return when api is online.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "example": "pong"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "/zipcode": {
         "post": {
           "tags" : ["zip code"],
