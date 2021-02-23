@@ -21,6 +21,7 @@ Start is done using the npm command:
 
 # Security 
 This api use an JWT Token to authenticate all requests, for use insert the key 'Authorization' on headers
+
 Valid token example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTM5NDQ5NDF9.XzqVCh8oGa1_rElG1cvBi_JKVH58j0DVNCyH7oEquUs
 
 # Swagger documentation
