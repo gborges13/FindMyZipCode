@@ -35,3 +35,13 @@ The application metrics is acessible on [new relic](https://one.newrelic.com/lau
 To run the test, first install the dependencies, then run npm command:
 
 `$ npm test`
+
+# Architecture
+
+In this API the principle of single responsibility was applied, based on SOLID
+
+Defining:
+Routes is responsible for defining the routes in the api rest
+Controller is responsible for validating the request information and calling the desired service
+Services is responsible for the business rules of the application
+Repository is responsible for storing application information
