@@ -42,18 +42,31 @@
               "name": "zipcode",
               "description" : "Object to find a zip code",
               "required": true,
-
               "schema": {
-                  "type": "object",
-                  "required": [
-                    "zipCode"
-                  ],
-                  "properties": {
-                    "zipCode": {
-                      "type": "string"
-                    }
+                "type": "object",
+                "properties": {
+                  "zipCode": {
+                    "type": "string",
+                    "example": "14400000"
+                  },
+                  "address": {
+                    "type": "string",
+                    "example": "Avenida Presidente Vargas"
+                  },
+                  "district" : {
+                      "type" : "string",
+                      "example" : "Cidade Nova"
+                  },
+                  "city" : {
+                      "type" : "string",
+                      "example": "Franca"
+                  },
+                  "state" : {
+                      "type" : "string",
+                      "example": "SP"                        
                   }
-                }                
+                }
+              }                
           }],
           "responses": {
             "200": {
@@ -89,7 +102,10 @@
             },
             "404": {
               "description": "A zip code with the specified number was not found."
-            }
+            },
+            "500": {
+              "description": "When internal server error occurred."
+            }            
           },
           "security": [
             {
@@ -144,14 +160,49 @@
             },
             "404": {
               "description": "A zip code with the specified number was not found."
-            }
+            },
+            "500": {
+              "description": "When internal server error occurred."
+            }            
           },
           "security": [
             {
               "api_key": []
             }
           ]    
-        }        
+        },
+        "delete" :{
+          "tags" : ["zip code"],
+          "summary": "Returns a zip code object by an zip code number.",
+          "operationId" : "findZipCodeGet",
+          "parameters": [{
+              "in": "path",
+              "name" : "zipcode",
+              "description" : "zip code to find",
+              "required": true,
+              "type": "string"
+          }],
+          "responses": {
+            "204": {
+              "description": "When record was deleted"
+            },
+            "401": {
+              "description": "When you don't use a token or used an invalid token."
+            },
+            "404": {
+              "description": "A zip code with the specified number was not found."
+            },
+            "500": {
+              "description": "When internal server error occurred."
+            }            
+          },
+          "security": [
+            {
+              "api_key": []
+            }
+          ]    
+        }
+
       }
   },
   "securityDefinitions": {
