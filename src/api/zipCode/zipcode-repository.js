@@ -63,6 +63,44 @@ function findOne(zipCode){
     return result
 }
 
+/**
+ * @method save - Receive a zip code as parameter and save or update
+ * @param {object} zipCode - Zip code
+ * @returns {object} - Object of zip code
+ */
+function save(zipCode){
+    const index = zipCodes.findIndex(x => {
+        return x.zipCode === zipCode.zipCode
+    })
+
+    if (index < 0){
+        zipCodes.push(zipCode)
+    } else {
+        zipCodes[index] = zipCode
+    }
+    return zipCode
+}
+
+/**
+ * @method destroy - Receive a zip code as parameter and delete
+ * @param {string} zipCode - Zip code
+ * @returns {boolean} - return true if zip code has deleted
+ */
+function destroy(zipCode){
+    const index = zipCodes.findIndex(x => {
+        return x.zipCode === zipCode
+    })
+
+    if (index < 0){
+        return false
+    }
+
+    zipCodes.splice(index, 1)
+    return true
+}
+
 module.exports = {
-    findOne
+    findOne,
+    save,
+    destroy
 }

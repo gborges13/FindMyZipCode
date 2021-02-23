@@ -25,6 +25,26 @@ function findZipCode(zipCode){
     return null
 }
 
+/**
+ * @method saveZipCode - Receive a zip code object and send to repository to save that
+ * @param {object} zipCode - Zip code
+ * @returns {object} - Object of zip code
+ */
+function saveZipCode(zipCode){
+    return repositoryZipcode.save(zipCode)
+}
+
+/**
+ * @method deleteZipCode - Receive a zip code object and send to repository to save that
+ * @param {string} zipCode - Zip code
+ * @returns {boolean} - Return if was successfully
+ */
+function deleteZipCode(zipCode){
+    return repositoryZipcode.destroy(zipCode)
+}
+
 module.exports = {
-    findZipCode
+    findZipCode,
+    saveZipCode,
+    deleteZipCode
 }
