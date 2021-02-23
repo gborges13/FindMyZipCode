@@ -28,7 +28,7 @@ function postZipCode(request, response){
             return response.status(400).json({ errors: errors.array() });
         }            
     
-        return response.json(zipCodeService.saveZipCode(request.body))
+        return response.status(201).json(zipCodeService.saveZipCode(request.body))
 
     } catch (error) {
         return response.status(500).json({error: error.message, callstack : error.stack})
@@ -42,7 +42,7 @@ function deleteZipCode(request, response){
             return response.status(400).json({ errors: errors.array() });
         }            
         
-        zipCode = request.params.zipcode       
+        zipCode = request.params.zipcode
 
         const result = zipCodeService.deleteZipCode(zipCode)
         if (result){
