@@ -21,10 +21,12 @@ Start is done using the npm command:
 
 # Security 
 This api use an JWT Token to authenticate all requests, for use insert the key 'Authorization' on headers
+
 Valid token example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTM5NDQ5NDF9.XzqVCh8oGa1_rElG1cvBi_JKVH58j0DVNCyH7oEquUs
 
 # Swagger documentation
 Swagger documentation is acessible on http://host:port/api-docs
+
 Example: http://localhost:3000/api-docs/
 
 # Metrics
@@ -41,7 +43,11 @@ To run the test, first install the dependencies, then run npm command:
 In this API the principle of single responsibility was applied, based on SOLID
 
 Defining:
-Routes is responsible for defining the routes in the api rest
-Controller is responsible for validating the request information and calling the desired service
-Services is responsible for the business rules of the application
-Repository is responsible for storing application information
+
+Routes is responsible for defining the routes in the api rest.
+
+Controller is responsible for validating the request information and calling the desired service.
+
+Services is responsible for the business rules of the application.
+
+Repository is responsible for storing application information.
