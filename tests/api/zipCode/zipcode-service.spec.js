@@ -35,4 +35,32 @@ describe('Tests on zipCode subject at service responsability', () => {
         expect(result).toEqual(mockedResult)
     })
 
+    test('Test the save and update a zip code', async () =>{
+        const mockedResult = {
+            zipCode : "11122233",
+            address : "Avenida teste",
+            district: "Centro",
+            city: "Rio de Janeiro",
+            state: "RJ"
+        }
+
+        let result = zipCodeService.saveZipCode(mockedResult)
+        expect(result).toEqual(mockedResult)
+
+        mockedResult.address = 'Avenida alteração'
+        result = zipCodeService.saveZipCode(mockedResult)
+        expect(result).toEqual(mockedResult)
+
+    })
+
+    test('Test the delete a zip code that does not exist', async () =>{
+        const result = zipCodeService.deleteZipCode('55555555')
+        expect(result).toEqual(false)
+    })
+
+    test('Test the delete a zip code', async () =>{
+        const result = zipCodeService.deleteZipCode('11122233')
+        expect(result).toEqual(true)
+    })
+
 })

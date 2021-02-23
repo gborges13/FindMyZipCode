@@ -8,7 +8,7 @@ describe('Tests on zipCode subject at controller responsability', () => {
         const mockZipCodeService = jest.spyOn(zipCodeServiceHelper, 'findZipCode')
         mockZipCodeService.mockReturnValue(null)
 
-        let request = {body : {zipCode : "89403206"}}
+        let request = {params : {zipCode : "89403206"}}
 
         let {response} = require('express')
         response.json = (data) => {
