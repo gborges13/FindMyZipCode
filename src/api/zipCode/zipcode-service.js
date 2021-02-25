@@ -81,6 +81,7 @@ function deleteZipCode(zipCode){
 }
 
 module.exports = {
+    webSearch,
     findZipCode,
     saveZipCode,
     deleteZipCode
