@@ -93,10 +93,4 @@ describe('Tests on zipCode subject at service responsability', () => {
         expect(result).toEqual(false)
     })
 
-    it("should do something", function (done) {
-        request(app())
-        .get('/zipcode/14403206')
-        .expect('GET', done)
-    })
-
 })
