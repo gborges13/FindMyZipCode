@@ -19,5 +19,13 @@ module.exports = {
     jwt: {
         secret: process.env.SECRET_TOKEN || 'FindMyZipCodePrivateToken',
         enabled: process.env.SECURITY_ENABLED ? process.env.SECURITY_ENABLED === 'true' : true,
-    }
+    },
+    redis: {
+        host: process.env.REDIS_HOST || 'localhost',
+        port: process.env.REDIS_PORT || 6379,
+        expirationInMinutes: process.env.CACHE_EXPIRATION_MINUTES
+            ? Number(process.env.CACHE_EXPIRATION_MINUTES)
+            : 360,
+    },
+
 }

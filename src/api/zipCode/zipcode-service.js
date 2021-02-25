@@ -6,15 +6,15 @@ const repositoryZipcode = require('./zipcode-repository')
  * @param {string} zipCode - Zip code
  * @returns {object} - Object of zip code
  */
-function findZipCode(zipCode){    
-    let result = repositoryZipcode.findOne(zipCode)
+async function findZipCode(zipCode){    
+    let result = await repositoryZipcode.findOne(zipCode)
     if (result){
         return result
     }
 
     for (let index = zipCode.length; index > 1; index--) {
         zipCode = zipCode.substring(0, index-1) + '0' + zipCode.substring(index, zipCode.length)
-        result = repositoryZipcode.findOne(zipCode)        
+        result = await repositoryZipcode.findOne(zipCode)        
 
         if (result){
             return result
