@@ -23,8 +23,8 @@ module.exports = {
     redis: {
         host: process.env.REDIS_HOST || 'localhost',
         port: process.env.REDIS_PORT || 6379,
-        expirationInMinutes: process.env.CACHE_EXPIRATION_MINUTES
-            ? Number(process.env.CACHE_EXPIRATION_MINUTES)
+        expirationInMinutes: process.env.REDIS_EXPIRATION_MINUTES
+            ? Number(process.env.REDIS_EXPIRATION_MINUTES)
             : 360,
     },
 
