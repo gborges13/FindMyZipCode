@@ -1,7 +1,7 @@
 const zipCodeService = require('./zipcode-service')
 const { validationResult } = require('express-validator');
 
-function getZipCode(request, response){
+async function getZipCode(request, response){
     try {
         const errors = validationResult(request);
         if (!errors.isEmpty()) {
@@ -10,7 +10,7 @@ function getZipCode(request, response){
 
         zipCode = request.params.zipcode
 
-        const record = zipCodeService.findZipCode(zipCode)
+        const record = await zipCodeService.findZipCode(zipCode)
         if(record){
             return response.json(record)
         } else {

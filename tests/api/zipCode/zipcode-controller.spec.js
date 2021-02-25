@@ -1,10 +1,11 @@
 const zipCodeController = require('../../../src/api/zipCode/zipcode-controller')
 const zipCodeServiceHelper = require('../../../src/api/zipCode/zipcode-service')
 const zipCodeRecord = require('./zipcode-fakeData')
+const expressValidator = require('express-validator')
 
 describe('Tests on zipCode subject at controller responsability', () => {
 
-    test('Test getZipCode method when zip code not found', async () => {
+    test('Test getZipCode method when zip code not found', async (done) => {
         const mockZipCodeService = jest.spyOn(zipCodeServiceHelper, 'findZipCode')
         mockZipCodeService.mockReturnValue(null)
 
@@ -16,12 +17,13 @@ describe('Tests on zipCode subject at controller responsability', () => {
             return response
         }
 
-        const result = zipCodeController.getZipCode(request, response)
+        const result = await zipCodeController.getZipCode(request, response)
         
         expect(result.statusCode).toEqual(404)
+        done()
     })
 
-    test('Test getZipCode method when body is invalid', async () => {
+    test('Test getZipCode method when body is invalid', async (done) => {
         const mockZipCodeService = jest.spyOn(zipCodeServiceHelper, 'findZipCode')
         mockZipCodeService.mockReturnValue(zipCodeRecord)
 
@@ -34,9 +36,10 @@ describe('Tests on zipCode subject at controller responsability', () => {
             return response
         }
 
-        const result = zipCodeController.getZipCode(request, response)
+        const result = await zipCodeController.getZipCode(request, response)
         
         expect(result.statusCode).toEqual(200)
+        done()
     })
 
     test('Test getZipCode method when an error occurred', async () => {
@@ -54,7 +57,7 @@ describe('Tests on zipCode subject at controller responsability', () => {
             return response
         }
 
-        const result = zipCodeController.getZipCode(request, response)
+        const result = await zipCodeController.getZipCode(request, response)
         
         expect(result.statusCode).toEqual(200)
     })
@@ -159,7 +162,6 @@ describe('Tests on zipCode subject at controller responsability', () => {
         const result = zipCodeController.deleteZipCode(request, response)
        
         expect(result.statusCode).toEqual(500)
-    })    
-
+    })
 
 })    

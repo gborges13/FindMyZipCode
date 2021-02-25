@@ -6,8 +6,8 @@ const { body, param } = require('express-validator');
 routes.get('/zipcode/:zipcode', 
            authorizationMiddleware, 
            param('zipcode').isString().isLength({min: 8, max: 8}),
-           (request, response) => {
-    return zipCodeController.getZipCode(request, response)
+           async (request, response) => {
+    return await zipCodeController.getZipCode(request, response)
 })
 
 routes.delete('/zipcode/:zipcode', 
