@@ -5,9 +5,10 @@ const swaggerDocument = require('./../swagger.json');
 const zipCodeRoutes = require('./api/zipCode/zipCode-routes')
 const healthRoutes = require('./api/health/health-routes')
 const logger = require('./middlewares/logs').logRequests
+const config = require('config')
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = config.port
 
 app.use(express.json()) 
 app.use(express.urlencoded({ extended: true }))
