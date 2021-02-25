@@ -1,4 +1,32 @@
 const repositoryZipcode = require('./zipcode-repository')
+const axios = require('axios')
+const config = require('config')
+
+async function webSearch(zipCode) {
+    try {
+        const response = await axios.get(config.searchService.url + zipCode + '/json')
+
+        let {cep, logradouro, bairro, localidade, uf, erro} = response.data
+
+        if (erro) {
+            return null
+        }
+
+        result = {
+            zipCode: cep.replace("-",""),
+            address: logradouro,
+            district: bairro,
+            city:localidade,
+            state: uf                  
+        }
+
+        saveZipCode(result)
+        return result        
+
+    } catch(error) {
+        throw error
+    }
+}
 
 /**
  * @method findZipCode - Receive a zip code as parameter and return a zip code, 
@@ -10,6 +38,11 @@ async function findZipCode(zipCode){
     let result = await repositoryZipcode.findOne(zipCode)
     if (result){
         return result
+    } else {
+        result = await webSearch(zipCode)
+        if (result){
+            return result
+        }         
     }
 
     for (let index = zipCode.length; index > 1; index--) {
@@ -18,8 +51,12 @@ async function findZipCode(zipCode){
 
         if (result){
             return result
-        }    
-
+        } else {
+            result = await webSearch(zipCode)
+            if (result){
+                return result
+            }         
+        }
     }
 
     return null

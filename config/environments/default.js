@@ -27,5 +27,8 @@ module.exports = {
             ? Number(process.env.REDIS_EXPIRATION_MINUTES)
             : 360,
     },
+    searchService : {
+        url : process.env.SEARCH_SERVICE || 'http://viacep.com.br/ws/'
+    }
 
 }
